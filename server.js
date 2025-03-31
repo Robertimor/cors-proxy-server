@@ -7,7 +7,7 @@ app.use(cors());
 
 app.get("/geonames", async (req, res) => {
   const { city, lang } = req.query;
-  const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=ТВОЙ_ЮЗЕРНЕЙМ`;
+  const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=robertimor`;
 
   try {
     const response = await fetch(apiUrl);
