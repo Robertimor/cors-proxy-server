@@ -20,7 +20,9 @@ app.get("/getApiKey", (req, res) => {
 });
 
 app.get("/geonames", async (req, res) => {
-  const { city, lang } = req.query;
+  // const { city, lang } = req.query;
+  const city = "London"
+  const lang = "ru"
   
   if (!city || !lang) {
     return res.status(400).json({ error: "Missing required parameters: city or lang" });
