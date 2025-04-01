@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config(); // Загружаем переменные из .env
+console.log("API_KEY загружен:", process.env.VITE_API_KEY);
 
 const app = express();
 app.use(cors());
