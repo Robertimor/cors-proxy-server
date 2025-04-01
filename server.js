@@ -11,6 +11,10 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.VITE_API_KEY; // Берём API-ключ из .env
 
+app.get("/getApiKey", (req, res) => {
+  res.json({ apiKey: process.env.VITE_API_KEY });
+});
+
 app.get("/geonames", async (req, res) => {
   const { city, lang } = req.query;
   
@@ -33,3 +37,4 @@ app.get("/geonames", async (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
+
