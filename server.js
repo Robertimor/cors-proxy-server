@@ -11,6 +11,9 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.VITE_API_KEY; // Берём API-ключ из .env
+const UNSPLASH_KEY = process.env.VITE_UNSPLASH_KEY
+
+console.log(UNSPLASH_KEY);
 
 app.get("/getApiKey", (req, res) => {
   res.json({ apiKey: process.env.VITE_API_KEY });
@@ -23,7 +26,7 @@ app.get("/geonames", async (req, res) => {
     return res.status(400).json({ error: "Missing required parameters: city or lang" });
   }
 
-  const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=${API_KEY}`;
+  const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=${UNSPLASH_KEY}`;
 
   try {
     const response = await fetch(apiUrl);
