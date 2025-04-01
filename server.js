@@ -20,27 +20,31 @@ app.get("/getApiKey", (req, res) => {
 });
 
 app.get("/geonames", async (req, res) => {
-  // const { city, lang } = req.query;
-  const city = "London"
-  const lang = "ru"
+  res.json({ apiKey: process.env.VITE_UNSPLASH_KEY })
+})
+
+// app.get("/geonames", async (req, res) => {
+//   // const { city, lang } = req.query;
+//   const city = "London"
+//   const lang = "ru"
   
-  if (!city || !lang) {
-    return res.status(400).json({ error: "Missing required parameters: city or lang" });
-  }
+//   if (!city || !lang) {
+//     return res.status(400).json({ error: "Missing required parameters: city or lang" });
+//   }
 
-  const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=${UNSPLASH_KEY}`;
+//   const apiUrl = `http://api.geonames.org/searchJSON?q=${city}&lang=${lang}&maxRows=1&username=${UNSPLASH_KEY}`;
 
-  try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) throw new Error("Failed to fetch data from Geonames");
+//   try {
+//     const response = await fetch(apiUrl);
+//     if (!response.ok) throw new Error("Failed to fetch data from Geonames");
 
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    console.error("Ошибка при запросе к Geonames API:", error);
-    res.status(500).json({ error: "Ошибка при запросе к Geonames API" });
-  }
-});
+//     const data = await response.json();
+//     res.json(data);
+//   } catch (error) {
+//     console.error("Ошибка при запросе к Geonames API:", error);
+//     res.status(500).json({ error: "Ошибка при запросе к Geonames API" });
+//   }
+// });
 
 app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
 
