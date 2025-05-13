@@ -15,6 +15,10 @@ app.get("/getApiKey", (req, res) => {
   res.json({ apiKey: process.env.VITE_API_KEY });
 });
 
+app.get("/getUnsplashApiKey", (req, res) => {
+  res.json({ apiKey: process.env.VITE_UNSPLASH_KEY });
+});
+
 app.get("/geonames", async (req, res) => {
   const { city, lang } = req.query;
   const username = "robertimor"; // Используется как API-ключ в Geonames
@@ -29,8 +33,6 @@ app.get("/geonames", async (req, res) => {
 
   try {
     const response = await fetch(apiUrl);
-    if (!response.ok) throw new Error("Ошибка запроса к Geonames");
-
     const data = await response.json();
     res.json(data); // Отправляем ответ с Geonames
   } catch (error) {
@@ -39,8 +41,6 @@ app.get("/geonames", async (req, res) => {
   }
 });
 
-app.get("/getUnsplashApiKey", (req, res) => {
-  res.json({ apiKey: process.env.VITE_UNSPLASH_KEY });
-});
+
 
 app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
